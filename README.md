@@ -70,3 +70,7 @@ Don't edit `~/.claude/agents/` directly; the next build overwrites it. Edit the 
 Then run `bash install.sh` again and start a new session. The orchestrator, which runs the stages and picks each stage's model, is `skills/idea-team/SKILL.md`.
 
 Each agent keeps its own memory in `~/.claude/agent-memory/<agent>/`, so it learns across runs.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
