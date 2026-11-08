@@ -59,11 +59,11 @@ At the end you get a `README.md` in the idea folder with the verdict, the improv
 
 These show sample data, not a real project. They come from **idea-team-live**, a separate add-on that is **not in this repository yet**: a live status page (and, in the Claude desktop app, a panel beside the chat) that shows every stage, what each agent is doing right now, send-back rounds, and anything the safety guard blocked.
 
-![A run in progress: finished stages with their time and actions, backend and frontend running side by side, and what each agent is doing now](docs/img/run.jpg)
+![A run in progress: finished stages with their time and actions, backend and frontend running side by side, and what each agent is doing now](docs/img/run.png)
 
-![Further down: a design review round, a git commit the safety guard blocked, and recent runs](docs/img/guard.jpg)
+![The whole page: every stage, a design review round, a git commit the safety guard blocked, and recent runs](docs/img/page.png)
 
-<img src="docs/img/phone.jpg" alt="The same run on a phone" width="320">
+<img src="docs/img/phone.png" alt="The same run on a phone" width="320">
 
 ## Safety
 
