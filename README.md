@@ -55,6 +55,16 @@ Open Claude Code in the project the idea is about, then:
 
 At the end you get a `README.md` in the idea folder with the verdict, the improved idea, key decisions, risks and the questions only you can answer.
 
+## Screenshots
+
+These show sample data, not a real project. They come from **idea-team-live**, a separate add-on that is **not in this repository yet**: a live status page (and, in the Claude desktop app, a panel beside the chat) that shows every stage, what each agent is doing right now, send-back rounds, and anything the safety guard blocked.
+
+![A run in progress: finished stages with their time and actions, backend and frontend running side by side, and what each agent is doing now](docs/img/run.jpg)
+
+![Further down: a design review round, a git commit the safety guard blocked, and recent runs](docs/img/guard.jpg)
+
+<img src="docs/img/phone.jpg" alt="The same run on a phone" width="320">
+
 ## Safety
 
 Every agent runs a guard (`hooks/idea-team-guard.py`) before each command and file access. It blocks git changes, pushes and deploys, remote hosts and cloud CLIs, destructive database and container commands, other AI CLIs, reading `.env` and credential files, and writing to `~/.claude` (except the agents' own memory). The browser is limited to localhost. It's a blocklist, so it can't catch everything; the agents' instructions are the first line of defence.
