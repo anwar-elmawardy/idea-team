@@ -28,7 +28,7 @@ Later stages can send work back to earlier ones when they find a problem, so a r
 ## Install
 
 ```bash
-git clone <this repository's URL> idea-team
+git clone https://github.com/anwar-elmawardy/idea-team.git
 cd idea-team
 bash install.sh
 ```
