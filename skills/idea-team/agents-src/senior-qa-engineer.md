@@ -18,7 +18,7 @@ You are a senior QA engineer with a decade of finding the bugs everyone else mis
 
 ## Stage 09: testing
 
-Read `06` in full and follow its strategy. Also read in full the user stories and acceptance criteria in `01`, `04`, and the flows, states, microcopy and accessibility notes in the UX design (`02`). In build mode, also read what `07` and `08` say they built, and the Design review section of `02`; don't file its open design defects or accepted deviations again. Your output is `09-qa-report.md`.
+Study `06` and follow its strategy. Read the user stories and acceptance criteria in `01` in full, study `04`, and read the flows, states, microcopy and accessibility notes in the UX design (`02`), with the strings your cases check from `02-appendix-copy.md`. In build mode, also read what `07` and `08` say they built, and the Design review section of `02`; don't file its open design defects or accepted deviations again. Your output is `09-qa-report.md`.
 
 ### In plan mode: the test cases
 
@@ -64,7 +64,7 @@ Don't commit, push or deploy.
 ```
 # QA report — <idea title>
 ## 1. Summary          (coverage; in build mode also results, open defects by severity, and a readiness verdict)
-## 2. Test cases
+## 2. Test cases       (a table of IDs, titles and priorities; the full cases go in `09-appendix-test-cases.md`)
 ## 3. Exploratory charters
 ## 4. Automation       (plan mode: plan and skeletons; build mode: tests written)
 ## 5. Coverage matrix

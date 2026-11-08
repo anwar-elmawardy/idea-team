@@ -12,7 +12,7 @@ Arguments: $ARGUMENTS
 
 ## The team
 
-| # | Stage | Agent (`subagent_type`) | Writes | Reads in full |
+| # | Stage | Agent (`subagent_type`) | Writes | Studies |
 |---|-------|-------------------------|--------|---------------|
 | 01 | Business analysis | senior-business-analyst | `01-business-analysis.md` | 00 |
 | 02 | UX design | senior-ui-ux-designer | `02-ux-design.md`, `02-ux-prototype/` | 01 |
@@ -24,9 +24,9 @@ Arguments: $ARGUMENTS
 | 08 | Frontend | senior-frontend-developer | `08-frontend.md` | 02 and its prototype, 04–06 (+ 01's stories and NFRs) |
 | 09 | Testing | senior-qa-engineer | `09-qa-report.md` | 04, 06 (+ 01's stories; 02's flows, states, copy and accessibility; in build mode also 07, 08) |
 | 10 | DevOps | senior-devops-engineer | `10-devops.md` | 03, 05, 06 (in build mode also 07–09) |
-| 11 | Final review | solution-architect | `11-final-review.md` | everything |
+| 11 | Final review | solution-architect | `11-final-review.md` | the handoff log and every Summary, then only what its checks need |
 
-Every stage also reads `00-idea.md`, `handoff-log.md` and the Summary of every earlier file. Run 07 and 08 in parallel, as two Agent calls in one message. Run every other stage alone, in order.
+Every stage also reads `00-idea.md`, `handoff-log.md` and the Summary of every earlier file. *Studying* a file means reading its Summary and the sections the stage's own work builds on, not the whole file (the agents' rule 1). Run 07 and 08 in parallel, as two Agent calls in one message. Run every other stage alone, in order.
 
 If any of these agent types is missing from your Agent tool, stop. Tell the user that the team isn't installed in `~/.claude/agents/`, or that a new session is needed to load it.
 
@@ -70,6 +70,7 @@ Choose each agent's model and effort when you start it, and pass both on every A
 - **Mode:** `build` only if the arguments include the exact flag `--build`; otherwise `plan`. Never infer the mode from the idea's wording, so "build a referral program" is a plan-mode idea.
   - Plan mode produces a complete design pack, including a clickable design prototype, and no product code.
   - Build mode also implements, tests and wires up the delivery plan's build-now slice in code.
+- **Scope:** `new product` if the idea creates a product or app that doesn't exist yet; otherwise `feature` (a feature of, or a change to, an existing product). It sets the documents' word budgets.
 - **Idea:** the rest of the arguments.
   - If it's a path to a file, read the file.
   - If it's an idea folder (one that contains `00-idea.md`), resume it as in step 7.
@@ -98,6 +99,7 @@ Choose each agent's model and effort when you start it, and pass both on every A
 # Idea — <short title>
 - **Date:** <YYYY-MM-DD>
 - **Mode:** plan | build
+- **Scope:** feature | new product
 - **Project:** <each repository's absolute path, and whether you inferred it>
 
 ## The idea, as given
@@ -121,26 +123,27 @@ If your harness has a task list, show one item per stage so the user can follow 
 Call the Agent tool with the stage's `subagent_type`. Keep the brief short, because the agent already knows its job:
 
 ```
-Stage <NN> — <stage name>. Mode: <plan|build>.
+Stage <NN> — <stage name>. Mode: <plan|build>. Scope: <feature|new product>.
 Idea folder: <absolute path>
 Project: <absolute path of each repository, or each worktree in build mode>
 Write: <absolute path of the output file>
-Read in full: <the files from the table>. Read the Summary of every other earlier file, plus 00-idea.md and handoff-log.md.
+Study: <the files from the table>. Read the Summary of every other earlier file, plus 00-idea.md and handoff-log.md.
 <Anything specific to this run: in build mode, the build-now tasks this stage implements (from 05's briefs);
 defects to fix; a challenge to answer.>
 End with your Handoff block.
 ```
 
 - For 02, also give the absolute path of the prototype folder, `<idea folder>/02-ux-prototype/`.
-- For 07 and 08, add that the other is running at the same time, and that both build to the CONTRACT sections of 04 (and in build mode, its machine-readable contract file). Tell 08 where the prototype is.
+- For 07 and 08, add that the other is running at the same time, and that both build to the CONTRACT sections of 04 and `04-appendix-contract.md` (and in build mode, its machine-readable contract file). Tell 08 where the prototype is.
 - For 11, say it's the final review, and list the open challenges from the log.
 - **Re-briefs, revisions, downstream updates, defect fixes, retests and the design review** go to the same stage's existing agent (after an escalation, the Opus one): continue it with SendMessage, so it keeps its context. If it's no longer available, start a new Agent call for that stage.
 
 ## 5. After each stage
 
-1. **Check the file without reading it.** Use `wc -w` and a grep for its `## ` headings against the agent's template. After 02, also check that `02-ux-prototype/index.html` exists, and that it loads nothing from the network: `grep -nE "(src|href)=[\"']https?:|@import|url\(['\"]?https?:" 02-ux-prototype/*.html 02-ux-prototype/*.css` must find nothing. If anything is missing or clearly a stub, re-brief the same agent once and say what's missing.
+1. **Check the file without reading it.** Use `wc -w` and a grep for its `## ` headings against the agent's template. After 02, also check that `02-ux-prototype/index.html` exists, and that it loads nothing from the network: `grep -nE "(src|href)=[\"']https?:|@import|url\(['\"]?https?:" 02-ux-prototype/*.html 02-ux-prototype/*.css` must find nothing. Also grep for leftover `<!-- fill:` placeholder lines (the agents' rule 10) in the main file and its appendices. If anything is missing, left as a placeholder or clearly a stub, re-brief the same agent once and say what's missing.
+   - **Word count.** Count the main file without its Revision and Handoff sections, `awk '/^## (Revision|Handoff)/{exit}1' <file> | wc -w`, and the stage's appendices, `cat <idea folder>/<NN>-appendix-*.md 2>/dev/null | wc -w`. Compare the main file with its budget (the agents' rule 9), feature / new product: 01 and 02: 6,000 / 9,000; 04: 6,500 / 10,000; 05, 07 and 08: 4,000 / 7,000; 03, 06, 09 and 10: 3,500 / 6,000; 11: 2,500 / 4,000. Record both counts in the Model line. Don't send a stage back for length alone: a rewrite costs more than later stages' targeted reading saves.
 2. **Get the handoff.** Take it from the agent's report. If none arrived, read the `## Handoff (latest)` section at the end of the file.
-3. **Log it.** Append the handoff to `handoff-log.md` under `## <NN> <stage>`, exactly as returned. Put this line directly under the heading: `- **Model:** <model> · <effort> (normally | under pressure: <the window and its %> | escalated: <why>) · <tokens> tokens · <minutes> min · 5-hour <before>% → <after>%`. Take the tokens and minutes from the agent's completion notification and the percentages from your usage checks, and write `unknown` where you have none.
+3. **Log it.** Append the handoff to `handoff-log.md` under `## <NN> <stage>`, exactly as returned. Put this line directly under the heading: `- **Model:** <model> · <effort> (normally | under pressure: <the window and its %> | escalated: <why>) · <tokens> tokens · <minutes> min · 5-hour <before>% → <after>% · <main words> words (budget <N>) + <appendix words> in appendices`. Take the tokens and minutes from the agent's completion notification and the percentages from your usage checks, and write `unknown` where you have none.
 4. **Tell the user** in one line what the stage added, taken from its "What I added or improved". After 02, also give the prototype's path so they can open it.
 5. **After 01:** if the recommendation is *reconsider*, stop and ask the user whether to continue, reshape the idea or drop it, before stage 02 runs.
 6. **Route blocking challenges** as loops:
@@ -171,7 +174,7 @@ End with your Handoff block.
 
 When the argument is an existing idea folder:
 
-1. Read `00-idea.md` and `handoff-log.md`.
+1. Read `00-idea.md` and `handoff-log.md`. If `00-idea.md` has no Scope line, decide it as in step 1 and add it.
 2. Find where to start: the stage named with `--from NN`, or else the first stage whose file is missing or whose handoff isn't in the log.
 3. If the log has an `Escalation pending` line with no `— escalated` entry after it, run that escalation first (see Models), then the updates its Downstream impact names, and only then start where item 2 says.
 4. Starting at 07 or 08 reruns both, and every later stage reruns too. In build mode, if the log has no `08 Frontend — integration` or `02 UX design — design review` entry after 07 and 08 have run, resume there, before 09.

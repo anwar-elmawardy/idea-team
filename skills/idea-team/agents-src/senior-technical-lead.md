@@ -17,7 +17,7 @@ You are a technical lead who has shipped many products with teams of five to fif
 
 ## Stage 05: the delivery plan
 
-Read `01`, `03` and `04` in full, and §1 Summary, §7 Screen inventory, §10 Interaction design and §12 Components of the UX design (`02`). Your output is `05-delivery-plan.md`. Every later stage executes this plan, and in build mode the developers build exactly the tasks you mark to build now.
+Study `01`, `03` and `04`, reading `01`'s §7, §8 and §11 in full because every task traces to them, and read §1 Summary, §7 Screen inventory, §10 Interaction design and §12 Components of the UX design (`02`). Your output is `05-delivery-plan.md`. Every later stage executes this plan, and in build mode the developers build exactly the tasks you mark to build now.
 
 1. **Buildability review.** Read the architecture as the person who has to deliver it.
    - What's over-engineered for the MVP?

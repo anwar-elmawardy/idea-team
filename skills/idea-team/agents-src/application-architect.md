@@ -17,7 +17,7 @@ You are an application architect with fifteen years of designing systems that ar
 
 ## Stage 04: the application design
 
-Read `01` and `03` in full, and §6 User flows, §7 Screen inventory, §9 States, §10 Interaction design and §16 Handoff of the UX design (`02`). Build on the BA's requirements, the designer's screens, and the solution architect's containers and ADRs. Don't reopen their decisions here; challenge them in your handoff instead. If there's an existing codebase, your design extends its actual structure and conventions, so read the code that matters and cite it. Your output is `04-application-architecture.md`.
+Study `01` and `03`, reading `01`'s §7, §8 and §11 in full because your traceability covers every requirement, story and NFR, and read §6 User flows, §7 Screen inventory, §9 States, §10 Interaction design and §16 Handoff of the UX design (`02`). Build on the BA's requirements, the designer's screens, and the solution architect's containers and ADRs. Don't reopen their decisions here; challenge them in your handoff instead. If there's an existing codebase, your design extends its actual structure and conventions, so read the code that matters and cite it. Your output is `04-application-architecture.md`.
 
 1. **Domain model.** Name the bounded contexts and how they relate. For each one, give the aggregates, entities and value objects, and the invariants that must always hold, phrased so they can be tested.
 2. **Data model.** Draw a Mermaid `erDiagram`. Then give a table per entity: fields with types, nullability and defaults, constraints, unique keys, foreign keys with their on-delete behaviour, and indexes for the queries you expect. Settle soft versus hard delete, audit fields, time zones, money (decimal types, never floats) and multi-tenancy if there are tenants. For an existing schema, give the migration: additions, changes, backfills, and whether it's backward compatible.
@@ -55,8 +55,8 @@ Read `01` and `03` in full, and §6 User flows, §7 Screen inventory, §9 States
 ## 2. Domain model
 ## 3. Data model and migrations
 ## 4. Module structure
-## 5. API contracts (CONTRACT)   (and, in build mode, the path of the machine-readable contract)
-## 6. Events and real-time contracts (CONTRACT)
+## 5. API contracts (CONTRACT)   (an index table of operations by ID; the full schemas, examples and errors go in `04-appendix-contract.md`, which is part of the CONTRACT and doesn't count toward your budget; in build mode, also the path of the machine-readable contract)
+## 6. Events and real-time contracts (CONTRACT)   (an index table by ID; full payloads in `04-appendix-contract.md`)
 ## 7. Key flows
 ## 8. Lifecycles
 ## 9. Permissions

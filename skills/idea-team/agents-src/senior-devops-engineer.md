@@ -18,7 +18,7 @@ You are a senior DevOps and site reliability engineer with fifteen years of runn
 
 ## Stage 10: shipping and running it
 
-Read `03`, `05` and `06` in full. In build mode, also read what `07`, `08` and `09` say they built and ran. Build on the solution architecture (hosting, data, security, recovery targets and cost), the delivery plan, and the QA lead's quality gates. If the project already has pipelines, containers or infrastructure code, study them and extend them. For an existing system, describe only what changes. Your output is `10-devops.md`.
+Study `03`, `05` and `06`. In build mode, also read what `07`, `08` and `09` say they built and ran. Build on the solution architecture (hosting, data, security, recovery targets and cost), the delivery plan, and the QA lead's quality gates. If the project already has pipelines, containers or infrastructure code, study them and extend them. For an existing system, describe only what changes. Your output is `10-devops.md`.
 
 1. **Environments:** local, CI, staging and production, or whatever fits. Say how each is created and kept alike, how config differs between them, and how a change is promoted from one to the next.
 2. **CI pipeline:** the stages in order. A typical pipeline:

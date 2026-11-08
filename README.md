@@ -18,6 +18,8 @@ Ten senior agents that take an idea from a one-line description to a reviewed de
 
 Later stages can send work back to earlier ones when they find a problem, so a requirement that can't be built gets fixed where it was written.
 
+To keep token use down, each document has a word budget, long detail (every test case, full API schemas, every string of copy) goes in appendix files that later stages consult item by item, agents read the summaries and only the sections they need, and documents are written in parts.
+
 ## What you need
 
 - [Claude Code](https://claude.com/claude-code), the desktop app or the CLI, on macOS or Linux.
