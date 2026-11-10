@@ -91,6 +91,8 @@ Choose each agent's model and effort when you start it, and pass both on every A
 
 **Where:** `<primary repository or working directory>/docs/ideas/<YYYY-MM-DD>-<slug>/`, where the slug is two to five kebab-case words from the idea. If that folder already exists, add `-2`, `-3` and so on.
 
+The agents' guard blocks writes to any path that passes through a `.claude/` folder. In plan mode, if that path does (for example a session worktree under `.claude/worktrees/`), put the idea folder in the repository's main checkout (the first path `git worktree list` prints), and record in `00-idea.md` that you did. Keep briefing the stages with the worktree as the Project.
+
 **Build mode: isolate the work first.** Before stage 01, create a git worktree for each repository in scope, on a new branch `idea/<slug>` from the baseline HEAD, as a sibling of the repository: `git worktree add -b idea/<slug> <repo>-idea-<slug> <baseline HEAD>`. Never put it under `.claude/`, because the agents' guard blocks writes there. Install dependencies in each worktree. Put the idea folder inside the primary repository's worktree, so the docs travel with the code, and brief every stage with the worktree paths. Never build in a checkout that other sessions may be using.
 
 **`00-idea.md`:**
@@ -209,7 +211,7 @@ After stage 11, write `README.md` in the idea folder:
 <A linked list of every file in the folder, one line each.>
 ```
 
-**Committing.** Commit only if the verdict isn't NO-GO and the repository's own rules allow it. Stage only the paths that the stages listed as changed, plus the idea folder. Make one commit per repository on its `idea/<slug>` branch, follow the repository's authorship rules, and never push. If you don't commit, say so and say why.
+**Committing.** Commit only if the verdict isn't NO-GO and the repository's own rules allow it. Stage only the paths that the stages listed as changed, plus the idea folder. In build mode, make one commit per repository on its `idea/<slug>` branch. In plan mode there is no such branch: commit the idea folder on the branch the repository's own rules name, or leave it for the session that builds it. Follow the repository's authorship rules, and never push. If you don't commit, say so and say why.
 
 Then report to the user in chat with the verdict, the improved idea in a few lines, the prototype's path, the questions only they can answer, where the code is (in build mode, each worktree and branch), and a link to the README. Don't paste the documents.
 
