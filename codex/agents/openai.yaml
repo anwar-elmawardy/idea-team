@@ -1,0 +1,4 @@
+interface:
+  display_name: "Idea Team"
+  short_description: "Eleven-stage idea planning and specialist review"
+  default_prompt: "Use $idea-team to plan my idea and produce a reviewed design pack with a clickable prototype."

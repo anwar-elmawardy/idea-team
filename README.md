@@ -1,6 +1,6 @@
-# Idea team for Claude Code
+# Idea team for Claude Code and Codex
 
-Ten senior agents that take an idea from a one-line description to a reviewed delivery plan. Each one improves on the work before it and hands off a document. You start it with one command, `/idea-team <your idea>`.
+Ten senior agents that take an idea from a one-line description to a reviewed delivery plan. Each one improves on the work before it and hands off a document. Start with `/idea-team <your idea>` in Claude Code or `$idea-team <your idea>` in Codex.
 
 | # | Stage | Agent | What it writes |
 |---|-------|-------|----------------|
@@ -22,6 +22,8 @@ To keep token use down, each document has a word budget, long detail (every test
 
 ## What you need
 
+For Codex, see [Codex installation and use](#codex-installation-and-use) below. The following requirements and the original installation instructions apply to Claude Code.
+
 - [Claude Code](https://claude.com/claude-code), the desktop app or the CLI, on macOS or Linux.
 - Python 3 (`python3`).
 - A plan with plenty of usage. A full run is eleven or more stages, most of them on Opus at high effort, and takes a few hours. On a smaller plan, expect it to pause when a usage limit is reached; you can resume it later.
@@ -40,6 +42,62 @@ This copies the skill, the agent sources and the safety guard into `~/.claude`, 
 To update later: `git pull && bash install.sh`, then start a new session.
 
 To remove it: `bash uninstall.sh`.
+
+## Codex installation and use
+
+Codex needs Python 3 and a host with native subagent tools. It does not need Claude
+Code, an API key, or a separate AI runner. From this repository:
+
+```bash
+bash install.sh --codex
+```
+
+This installs a self-contained skill to `${CODEX_HOME:-~/.codex}/skills/idea-team/`.
+It adapts the same ten role sources into references, preserving their output templates
+and handoffs, and uses the Codex orchestrator in `codex/SKILL.md`. It leaves Claude's
+agents, hooks, memory and configuration alone. Updates preserve the previous Codex
+installation under `CODEX_HOME/backups/`; an existing unrecognized skill or symlink
+is refused. If your current chat does not discover the skill, open a new Codex chat.
+
+In the target project's Codex chat:
+
+```text
+$idea-team add a weekly leaderboard with friends-only rankings
+$idea-team docs/ideas/<date>-<slug> --from 07
+```
+
+Plan mode writes the same design pack and prototype in `docs/ideas/`. Only an explicit
+`--build` requests implementation, and the project's own rules may prohibit it (for
+example, Frenzy Bash uses the team for planning and the coordinating session for
+implementation). The Codex adapter leaves changes reviewable without committing or
+pushing them. Native subagents inherit the current model unless the user or repository
+explicitly specifies model routing; it does not assume Claude's model names exist.
+
+Codex pauses at **30% or less usage remaining**, or a stricter owner reserve, and
+requires an explicit instruction to resume. It checks the host's usage tool before
+stages and every five minutes during sustained work. If that tool is unavailable it
+reports that enforcement cannot be verified. A full design run still consumes substantial
+usage and can take hours; installing the skill does not start one.
+
+**Guard limitation:** the Claude PreToolUse guard is not active in Codex. This adapter
+uses workflow instructions and the host's actual permissions; it does not claim hook
+enforcement or a security sandbox. Do not assume the two runtimes have identical safety
+controls. See [OpenAI's skill conversion guidance](https://developers.openai.com/plugins/guides/submit-claude-plugin).
+
+To update, pull the desired changes and rerun `bash install.sh --codex`. To remove only
+the Codex skill, run `bash uninstall.sh --codex`; saved idea packs and backups remain.
+The original no-flag install/uninstall commands continue to target Claude only.
+
+Validate the adapter without launching agents or spending model usage:
+
+```bash
+python3 -m unittest discover -s codex -p 'test_*.py' -v
+python3 codex/build.py build --output /tmp/idea-team-codex-preview
+```
+
+The build output directory must not already exist. Edit `codex/SKILL.md` for the
+Codex workflow, `codex/build.py` for runtime conversion, and `skills/idea-team/agents-src/`
+for the shared specialist templates. Reinstall to apply changes.
 
 ## Use
 

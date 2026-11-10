@@ -1,6 +1,17 @@
 #!/usr/bin/env bash
 # Remove the idea team from ~/.claude. The agents' memory (~/.claude/agent-memory/) is kept.
 set -euo pipefail
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+case "${1:-}" in
+  --codex) exec python3 "$here/codex/build.py" uninstall "${@:2}" ;;
+  --claude) shift ;;
+  "") ;;
+  *) echo "Usage: bash uninstall.sh [--claude | --codex]" >&2; exit 2 ;;
+esac
+if (( $# )); then
+  echo "Usage: bash uninstall.sh [--claude | --codex]" >&2
+  exit 2
+fi
 dest="${HOME}/.claude"
 for a in senior-business-analyst senior-ui-ux-designer solution-architect application-architect \
          senior-technical-lead senior-qa-lead senior-backend-developer senior-frontend-developer \

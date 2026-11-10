@@ -1,9 +1,18 @@
 #!/usr/bin/env bash
-# Install or update the idea team into your Claude Code folder (~/.claude).
-# Run from the repository folder: bash install.sh
+# Install for Claude Code (default) or Codex (--codex).
 set -euo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+case "${1:-}" in
+  --codex) exec python3 "$here/codex/build.py" install "${@:2}" ;;
+  --claude) shift ;;
+  "") ;;
+  *) echo "Usage: bash install.sh [--claude | --codex]" >&2; exit 2 ;;
+esac
+if (( $# )); then
+  echo "Usage: bash install.sh [--claude | --codex]" >&2
+  exit 2
+fi
 dest="${HOME}/.claude"
 
 command -v python3 >/dev/null || { echo "python3 is needed: install Python 3 first." >&2; exit 1; }
