@@ -159,6 +159,10 @@ CONDITIONS, NO-GO), mode/date, improved idea, prototype link, key decisions link
 their sections, biggest risks, deduplicated owner questions with recorded assumptions and each assumption's
 ledger status from 11 (held, weakened, broken or untested),
 next steps and a linked document index. On NO-GO report blockers; do not implement.
+Then add each assumption the final ledger shows as broken, resolved or not, or weakened by
+two stages to `ASSUMPTIONS.md` beside the idea folder (create it if missing): date and run
+folder, ASM ID, the assumption, who broke or weakened it, the evidence and what replaced it.
+Newest first, repeats merged, under about 3,000 words. Commit it with the idea folder.
 In build mode include checkout/branch, actual checks, limitations and run instructions.
 Leave changes reviewable without committing or pushing them.
 

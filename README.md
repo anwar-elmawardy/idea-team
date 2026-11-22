@@ -20,6 +20,8 @@ Later stages can send work back to earlier ones when they find a problem, so a r
 
 **Assumption ledger.** The business analyst numbers every assumption it makes (`ASM-001`, `ASM-002`, …), each with a confidence, what would prove it wrong and who can check it. Every later stage marks the assumptions it has evidence on as *held*, *weakened* or *broken*, citing the evidence, and records new assumptions of its own (`ASM-07-01`). A broken assumption that would lead to the wrong product sends the owning stage back to revise. The final review lists every stage's judgment, treats a break as resolved only when the revision addresses it and the reviewer rechecks it, and flags untested assumptions the first release depends on. So an early guess can't quietly survive all ten stages: it ends up held, revised, or listed as an open question for you.
 
+**Across runs.** When a run finishes, every assumption it broke (or two stages weakened) goes into the project's `docs/ideas/ASSUMPTIONS.md`: which run, who broke it, the evidence and what replaced it. Every new run reads that file first, and the business analyst can't make a recorded assumption again without new evidence, so the next run doesn't repeat the same guess.
+
 To keep token use down, each document has a word budget, long detail (every test case, full API schemas, every string of copy) goes in appendix files that later stages consult item by item, agents read the summaries and only the sections they need, and documents are written in parts.
 
 ## What you need

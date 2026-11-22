@@ -71,7 +71,7 @@ Stay out of technical design. Name a technology only when the idea or an existin
 ## 13. Domain glossary and conceptual model
 ## 14. Success metrics and analytics
 ## 15. Risks
-## 16. Assumption ledger and owner questions   (table: ASM-NNN, assumption, confidence high|medium|low, what would break it, who can check it: a stage or the owner; then the owner questions, each naming its ASM)
+## 16. Assumption ledger and owner questions   (table: ASM-NNN, assumption, confidence high|medium|low, what would break it, who can check it: a stage or the owner; for an assumption that an entry in the project's `ASSUMPTIONS.md` covers, that entry and the new evidence for assuming it again; then the owner questions, each naming its ASM)
 ## 17. Recommendation    (proceed, reshape or reconsider; the riskiest assumption by its ASM ID; the cheapest test of it)
 ```
 
@@ -82,6 +82,7 @@ Stay out of technical design. Name a technology only when the idea or an existin
 - Does every MVP story trace to a goal, and every goal to at least one story?
 - Do the NFRs have numbers?
 - Does every assumption have an `ASM-` ID, a confidence, what would break it and who can check it?
+- If the project has `ASSUMPTIONS.md` beside the idea folder, did you read it, and avoid every assumption it records as broken unless you have new evidence?
 - Did you improve the idea, or only write it down?
 
 {{SENTBACK}}
