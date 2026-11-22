@@ -109,11 +109,11 @@ Record each fix under "Defect fixes" in your file. If you think a report isn't a
 ### Handoff — 08 Frontend
 - **File:** <absolute path>
 - **Status:** complete | complete with gaps | blocked
-- **Assumptions checked:** "none", or one bullet each: ASM-NNN held | weakened | broken — <the evidence>
+- **Assumptions checked:** "none", or one bullet each: ASM-NNN held | weakened | broken (blocking) | broken (advisory) — <the evidence>
 - **What I added or improved:** 3–6 bullets
 - **Open defects for the backend:** (integration only) "none", or one bullet each: DEF-NNN [critical|major|minor|trivial] BE <title>
 - **Challenges to earlier stages:** "none", or one bullet each: [stage NN] [blocking|advisory] <the problem> → <the fix you propose>
 - **Downstream impact:** (only when sent back) the stages to update and what changes, or "none"
-- **Owner questions:** "none", or one bullet each: <question> (I assumed: <assumption>)
+- **Owner questions:** "none", or one bullet each: <question> (I assumed: ASM-NNN <assumption>)
 - **For the next stage:** 1–3 bullets on what QA and DevOps must pay attention to, including the exact test commands you ran
 ```

@@ -87,7 +87,7 @@ You wrote `03`, so review it as if someone else had. Name its three weakest deci
 - **Risks.** Each high risk has a mitigation that a stage actually owns.
 - **Claims (build mode).** Rerun the targeted test and check commands that stages 07, 08 and 09 report, and compare the results. Any claim you can't reproduce is a finding.
 - **Open threads.** Unresolved challenges and owner questions from `handoff-log.md`.
-- **Assumption ledger.** For every `ASM-`, its latest status and evidence from the handoffs' Assumptions checked lines: held, weakened, broken or untested. A broken assumption with no revision, or one weakened by two stages, is a finding. Flag every untested assumption the MVP depends on.
+- **Assumption ledger.** For every `ASM-`, list every stage's judgment and evidence from the handoffs' Assumptions checked lines, not only the latest: a later "held" doesn't erase earlier contrary evidence. Its status is held, weakened, broken or untested. A break counts as resolved only when the owning stage's revision names that ID (accepted and changed, or rejected with reasons) and you have rechecked the revised text. An unresolved break, or an assumption weakened by two stages, is a finding. Flag every untested assumption the MVP depends on.
 
 As an exception to rule 3, you may fix trivial inconsistencies directly in other stages' *documents*, such as a mismatched name, a wrong ID or a broken cross-reference. Never edit code. List each fix under "Corrections made". Anything bigger becomes a finding.
 
@@ -101,7 +101,7 @@ As an exception to rule 3, you may fix trivial inconsistencies directly in other
 ## Findings             (each: severity, area, problem, evidence, recommended fix, owner stage)
 ## Corrections made
 ## Conditions for GO
-## Assumption ledger   (table: ASM-NNN, assumption, status held|weakened|broken|untested, evidence, stage that checked it)
+## Assumption ledger   (table: ASM-NNN, assumption, each stage's judgment with its evidence, resolution, final status held|weakened|broken|untested)
 ## Open owner questions (deduplicated across all stages, each with the assumption the team used)
 ## What the team improved   (the original idea against the final one, briefly)
 ```
@@ -114,11 +114,11 @@ Use `03 Solution architecture` or `11 Final review` as the stage:
 ### Handoff — <stage>
 - **File:** <absolute path>
 - **Status:** complete | complete with gaps | blocked
-- **Assumptions checked:** "none", or one bullet each: ASM-NNN held | weakened | broken — <the evidence>
+- **Assumptions checked:** "none", or one bullet each: ASM-NNN held | weakened | broken (blocking) | broken (advisory) — <the evidence>
 - **Verdict:** (stage 11 only) GO | GO WITH CONDITIONS | NO-GO
 - **What I added or improved:** 3–6 bullets
 - **Challenges to earlier stages:** "none", or one bullet each: [stage NN] [blocking|advisory] <the problem> → <the fix you propose>
 - **Downstream impact:** (only when sent back) the stages to update and what changes, or "none"
-- **Owner questions:** "none", or one bullet each: <question> (I assumed: <assumption>)
+- **Owner questions:** "none", or one bullet each: <question> (I assumed: ASM-NNN <assumption>)
 - **For the next stage:** 1–3 bullets on what the next stage must pay attention to
 ```

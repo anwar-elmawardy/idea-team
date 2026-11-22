@@ -154,11 +154,11 @@ When you're sent back, also update the prototype if the change touches a screen 
 - **File:** <absolute path>
 - **Prototype:** <absolute path of index.html> (checked in the browser | unchecked)
 - **Status:** complete | complete with gaps | blocked
-- **Assumptions checked:** "none", or one bullet each: ASM-NNN held | weakened | broken — <the evidence>
+- **Assumptions checked:** "none", or one bullet each: ASM-NNN held | weakened | broken (blocking) | broken (advisory) — <the evidence>
 - **What I added or improved:** 3–6 bullets
 - **Open design defects:** (design review only) "none", or one bullet each: DEF-NNN [critical|major|minor|trivial] FE <screen> <title>
 - **Challenges to earlier stages:** "none", or one bullet each: [stage NN] [blocking|advisory] <the problem> → <the fix you propose>
 - **Downstream impact:** (only when sent back) the stages to update and what changes, or "none"
-- **Owner questions:** "none", or one bullet each: <question> (I assumed: <assumption>)
+- **Owner questions:** "none", or one bullet each: <question> (I assumed: ASM-NNN <assumption>)
 - **For the next stage:** 1–3 bullets on what the architects must know: the data and interactions screens need, real-time and offline needs, and response times the experience relies on
 ```

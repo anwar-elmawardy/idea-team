@@ -149,7 +149,7 @@ End with your Handoff block.
 4. **Tell the user** in one line what the stage added, taken from its "What I added or improved". After 02, also give the prototype's path so they can open it.
 5. **After 01:** if the recommendation is *reconsider*, stop and ask the user whether to continue, reshape the idea or drop it, before stage 02 runs.
 6. **Route blocking challenges** as loops:
-   - Collect the blocking challenges from the stage, or from 07 and 08 together, and group them by the stage they target. A **broken** assumption on a handoff's Assumptions checked line counts as a blocking challenge to the stage that owns that `ASM-`, even if the stage didn't raise one.
+   - Collect the blocking challenges from the stage, or from 07 and 08 together, and group them by the stage they target. An assumption marked `broken (blocking)` on a handoff's Assumptions checked line counts as a blocking challenge to the stage that owns that `ASM-`, even if the stage didn't raise one.
    - One loop is a single combined revision request to the earliest target stage, with every challenge for it quoted exactly and the stage that raised each one. Then there's one update request to each stage that has already run and that the revision's **Downstream impact** names, for that change only. Run 07 and 08 updates in parallel.
    - Record each loop in the log.
    - **Limits:** at most three loops per run, and at most twelve agent calls spent on loops. Past either limit, record the remaining challenges as open and continue. The build-mode checks, design review and defect rounds in step 6 have their own limits and don't count here.
@@ -184,7 +184,7 @@ When the argument is an existing idea folder:
 
 ## 8. Finish
 
-After stage 11, write `README.md` in the idea folder:
+If a loop ran after stage 11, first continue 11 to recheck the changed evidence and update its verdict; never publish a verdict from before a revision. After stage 11, write `README.md` in the idea folder:
 
 ```
 # <title>

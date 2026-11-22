@@ -126,8 +126,9 @@ After a stage returns:
   the run with its concrete gap and resume command. A business recommendation to
   reconsider or an owner-only decision that changes scope needs the owner's answer.
 
-Treat a **broken** assumption on a handoff's Assumptions checked line as a blocking
-challenge to the stage that owns that `ASM-`, even if the stage raised none.
+Treat an assumption marked `broken (blocking)` on a handoff's Assumptions checked
+line as a blocking challenge to the stage that owns that `ASM-`, even if the stage
+raised none.
 Group blocking challenges by target and send the earliest target a single revision
 request quoting each challenge and source. Use the same agent when available; a new
 one reads the existing draft and revises it in place. Only that specialist edits its
