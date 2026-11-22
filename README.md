@@ -16,7 +16,9 @@ Ten senior agents that take an idea from a one-line description to a reviewed de
 | 10 | DevOps | senior-devops-engineer | CI/CD, environments, observability, rollback, runbooks |
 | 11 | Final review | solution-architect | GO, GO WITH CONDITIONS or NO-GO |
 
-Later stages can send work back to earlier ones when they find a problem, so a requirement that can't be built gets fixed where it was written.
+Later stages can send work back to earlier ones when they find a problem, so a requirement that can't be built gets fixed where it was written. A stage never edits another stage's document: it raises a *blocking* challenge, the owning stage revises its own file (it may accept or argue back, with reasons), and the later stages it affects update. A run allows up to three of these loops.
+
+**Assumption ledger.** The business analyst numbers every assumption it makes (`ASM-001`, `ASM-002`, …), each with a confidence, what would prove it wrong and who can check it. Every later stage marks the assumptions it has evidence on as *held*, *weakened* or *broken*, citing the evidence, and records new assumptions of its own (`ASM-07-01`). A broken assumption that would lead to the wrong product sends the owning stage back to revise. The final review lists every stage's judgment, treats a break as resolved only when the revision addresses it and the reviewer rechecks it, and flags untested assumptions the first release depends on. So an early guess can't quietly survive all ten stages: it ends up held, revised, or listed as an open question for you.
 
 To keep token use down, each document has a word budget, long detail (every test case, full API schemas, every string of copy) goes in appendix files that later stages consult item by item, agents read the summaries and only the sections they need, and documents are written in parts.
 
@@ -111,7 +113,7 @@ Open Claude Code in the project the idea is about, then:
 - **Build mode**, `/idea-team --build <idea>`, also implements the delivery plan's "build now" slice in a separate git worktree on a branch `idea/<slug>`, tests it, and commits there if the final review isn't NO-GO. It never pushes.
 - **Resume** a paused or stopped run: `/idea-team docs/ideas/<date>-<slug> --from NN`.
 
-At the end you get a `README.md` in the idea folder with the verdict, the improved idea, key decisions, risks and the questions only you can answer.
+At the end you get a `README.md` in the idea folder with the verdict, the improved idea, key decisions, risks and the questions only you can answer, each with its assumption's ledger status (held, weakened, broken or untested).
 
 ## Screenshots
 
