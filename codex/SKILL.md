@@ -104,7 +104,7 @@ idea folder and output paths, role/shared/revision reference paths, study inputs
 specific tasks or quoted challenges, allowed file ownership and the required Handoff.
 Give 02 its prototype path; give 07/08 the frozen CONTRACT sections and
 `04-appendix-contract.md` (plus the machine-readable contract in build mode). Give
-11 the open challenges. Stages may not delegate further.
+11 the open challenges and every Assumptions checked line from the log. Stages may not delegate further.
 
 ## Check and revise
 
@@ -126,6 +126,8 @@ After a stage returns:
   the run with its concrete gap and resume command. A business recommendation to
   reconsider or an owner-only decision that changes scope needs the owner's answer.
 
+Treat a **broken** assumption on a handoff's Assumptions checked line as a blocking
+challenge to the stage that owns that `ASM-`, even if the stage raised none.
 Group blocking challenges by target and send the earliest target a single revision
 request quoting each challenge and source. Use the same agent when available; a new
 one reads the existing draft and revises it in place. Only that specialist edits its
@@ -153,7 +155,8 @@ before 09. Stop only owned local services and preserve all code and test evidenc
 
 After 11, write `README.md` in the idea folder with the exact verdict (GO, GO WITH
 CONDITIONS, NO-GO), mode/date, improved idea, prototype link, key decisions linked to
-their sections, biggest risks, deduplicated owner questions with recorded assumptions,
+their sections, biggest risks, deduplicated owner questions with recorded assumptions and each assumption's
+ledger status from 11 (held, weakened, broken or untested),
 next steps and a linked document index. On NO-GO report blockers; do not implement.
 In build mode include checkout/branch, actual checks, limitations and run instructions.
 Leave changes reviewable without committing or pushing them.
