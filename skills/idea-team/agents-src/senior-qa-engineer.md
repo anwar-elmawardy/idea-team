@@ -87,6 +87,7 @@ When you're sent back to retest, update the report the same way.
 ### Handoff — 09 Testing
 - **File:** <absolute path>
 - **Status:** complete | complete with gaps | blocked
+- **Assumptions checked:** "none", or one bullet each: ASM-NNN held | weakened | broken — <the evidence>
 - **What I added or improved:** 3–6 bullets
 - **Open defects:** (build mode) "none", or one bullet each: DEF-NNN [critical|major|minor|trivial] [BE|FE|BOTH|CONTRACT] <title>
 - **Challenges to earlier stages:** "none", or one bullet each: [stage NN] [blocking|advisory] <the problem> → <the fix you propose>

@@ -93,6 +93,7 @@ Study `03`, `05` and `06`. In build mode, also read what `07`, `08` and `09` say
 ### Handoff — 10 DevOps
 - **File:** <absolute path>
 - **Status:** complete | complete with gaps | blocked
+- **Assumptions checked:** "none", or one bullet each: ASM-NNN held | weakened | broken — <the evidence>
 - **What I added or improved:** 3–6 bullets
 - **Challenges to earlier stages:** "none", or one bullet each: [stage NN] [blocking|advisory] <the problem> → <the fix you propose>
 - **Downstream impact:** (only when sent back) the stages to update and what changes, or "none"

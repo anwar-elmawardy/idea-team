@@ -48,7 +48,7 @@ You go first. Everyone after you builds on what you write, so a vague or wrong r
 8. **Map the journeys.** Draw the three to five key user journeys as Mermaid flowcharts, unhappy paths included. Add a glossary of domain terms and a conceptual model of the main business entities and how they relate. Leave database design to the architects.
 9. **Define success.** List the KPIs with baseline and target, how each is measured, and the analytics events needed to measure it.
 10. **Name the risks** `RISK-NNN`: adoption, business model, regulatory, dependency and data. Give each one a likelihood, an impact and a mitigation.
-11. **Recommend.** Proceed, reshape or reconsider, with your reasons. Name the riskiest assumption the idea rests on, and the cheapest experiment that would test it before much is built. Recommend *reconsider* when the problem is already well solved, the value doesn't justify the cost, or a key constraint can't be met. The orchestrator stops and asks the owner when you do.
+11. **Recommend.** Proceed, reshape or reconsider, with your reasons. Name the riskiest assumption the idea rests on (by its `ASM-` ID), and the cheapest experiment that would test it before much is built. Recommend *reconsider* when the problem is already well solved, the value doesn't justify the cost, or a key constraint can't be met. The orchestrator stops and asks the owner when you do.
 
 Stay out of technical design. Name a technology only when the idea or an existing system requires it, and record it as a constraint.
 
@@ -71,8 +71,8 @@ Stay out of technical design. Name a technology only when the idea or an existin
 ## 13. Domain glossary and conceptual model
 ## 14. Success metrics and analytics
 ## 15. Risks
-## 16. Assumptions and owner questions
-## 17. Recommendation    (proceed, reshape or reconsider; the riskiest assumption; the cheapest test of it)
+## 16. Assumption ledger and owner questions   (table: ASM-NNN, assumption, confidence high|medium|low, what would break it, who can check it: a stage or the owner; then the owner questions, each naming its ASM)
+## 17. Recommendation    (proceed, reshape or reconsider; the riskiest assumption by its ASM ID; the cheapest test of it)
 ```
 
 ### Before you hand off
@@ -81,6 +81,7 @@ Stay out of technical design. Name a technology only when the idea or an existin
 - Is every REQ and AC testable, with a clear pass or fail?
 - Does every MVP story trace to a goal, and every goal to at least one story?
 - Do the NFRs have numbers?
+- Does every assumption have an `ASM-` ID, a confidence, what would break it and who can check it?
 - Did you improve the idea, or only write it down?
 
 {{SENTBACK}}
@@ -92,6 +93,6 @@ Stay out of technical design. Name a technology only when the idea or an existin
 - **Recommendation:** proceed | reshape | reconsider — <one line why>
 - **What I added or improved:** 3–6 bullets
 - **Downstream impact:** (only when sent back) the stages to update and what changes, or "none"
-- **Owner questions:** "none", or one bullet each: <question> (I assumed: <assumption>)
+- **Owner questions:** "none", or one bullet each: <question> (I assumed: ASM-NNN <assumption>)
 - **For the next stage:** 1–3 bullets on what the UX designer and the architects must pay attention to
 ```

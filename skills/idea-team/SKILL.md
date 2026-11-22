@@ -137,7 +137,7 @@ End with your Handoff block.
 
 - For 02, also give the absolute path of the prototype folder, `<idea folder>/02-ux-prototype/`.
 - For 07 and 08, add that the other is running at the same time, and that both build to the CONTRACT sections of 04 and `04-appendix-contract.md` (and in build mode, its machine-readable contract file). Tell 08 where the prototype is.
-- For 11, say it's the final review, and list the open challenges from the log.
+- For 11, say it's the final review, and list the open challenges and every Assumptions checked line from the log.
 - **Re-briefs, revisions, downstream updates, defect fixes, retests and the design review** go to the same stage's existing agent (after an escalation, the Opus one): continue it with SendMessage, so it keeps its context. If it's no longer available, start a new Agent call for that stage.
 
 ## 5. After each stage
@@ -149,7 +149,7 @@ End with your Handoff block.
 4. **Tell the user** in one line what the stage added, taken from its "What I added or improved". After 02, also give the prototype's path so they can open it.
 5. **After 01:** if the recommendation is *reconsider*, stop and ask the user whether to continue, reshape the idea or drop it, before stage 02 runs.
 6. **Route blocking challenges** as loops:
-   - Collect the blocking challenges from the stage, or from 07 and 08 together, and group them by the stage they target.
+   - Collect the blocking challenges from the stage, or from 07 and 08 together, and group them by the stage they target. A **broken** assumption on a handoff's Assumptions checked line counts as a blocking challenge to the stage that owns that `ASM-`, even if the stage didn't raise one.
    - One loop is a single combined revision request to the earliest target stage, with every challenge for it quoted exactly and the stage that raised each one. Then there's one update request to each stage that has already run and that the revision's **Downstream impact** names, for that change only. Run 07 and 08 updates in parallel.
    - Record each loop in the log.
    - **Limits:** at most three loops per run, and at most twelve agent calls spent on loops. Past either limit, record the remaining challenges as open and continue. The build-mode checks, design review and defect rounds in step 6 have their own limits and don't count here.
@@ -202,7 +202,7 @@ After stage 11, write `README.md` in the idea folder:
 ## Biggest risks
 
 ## Questions for you
-<The owner questions, deduplicated, each with the assumption the team used.>
+<The owner questions, deduplicated, each with the assumption the team used and its ledger status from 11: held, weakened, broken or untested.>
 
 ## Next steps
 <On NO-GO: the blocking findings, and the command to resume after fixing them: /idea-team <folder> --from NN>

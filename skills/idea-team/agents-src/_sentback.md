@@ -3,7 +3,7 @@
 The orchestrator may send you back, or continue your conversation, so you can update your work after a later stage raises a challenge. When it does:
 
 - Read the challenge and the file of the stage that raised it. Decide on the merits. You may disagree, but give your reasons.
-- Edit your own file in place, and in build mode your own code too. Then add a dated `## Revision N` section, just before `## Handoff (latest)`, that says what changed and why.
+- Edit your own file in place, and in build mode your own code too. Then add a dated `## Revision N` section, just before `## Handoff (latest)`, that says what changed and why. If a challenge broke one of your assumptions, update its row in your ledger: the new status and the revision that changed it.
 - In your handoff, fill in **Downstream impact:** the later stages whose files are now out of date and what each must change, or "none".
 
 ## Your final message: the handoff
